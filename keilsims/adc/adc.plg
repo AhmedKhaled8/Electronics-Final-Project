@@ -8,12 +8,58 @@ Project File Date:  05/30/2020
 
 <h2>Output:</h2>
 compiling adc.c...
+ADC.C(10): error C141: syntax error near 'P0', expected 'const'
+ADC.C(11): error C141: syntax error near 'P2', expected 'const'
+ADC.C(54): error C202: 'adc1': undefined identifier
+ADC.C(55): error C202: 'adc2': undefined identifier
+ADC.C(95): error C202: 'adc1': undefined identifier
+ADC.C(99): error C202: 'adc2': undefined identifier
+adc.c - 6 Error(s), 0 Warning(s).
+compiling adc.c...
+ADC.C(10): error C141: syntax error near 'sfr'
+ADC.C(10): error C141: syntax error near 'P0', expected 'const'
+ADC.C(11): error C141: syntax error near 'sfr'
+ADC.C(11): error C141: syntax error near 'P2', expected 'const'
+ADC.C(54): error C202: 'adc1': undefined identifier
+ADC.C(55): error C202: 'adc2': undefined identifier
+ADC.C(95): error C202: 'adc1': undefined identifier
+ADC.C(99): error C202: 'adc2': undefined identifier
+adc.c - 8 Error(s), 0 Warning(s).
+compiling adc.c...
+ADC.C(10): error C141: syntax error near 'const', expected '<id>'
+ADC.C(22): error C231: 'EA': redefinition
+ADC.C(22): error C231: 'EA': redefinition
+ADC.C(24): error C141: syntax error near 'while'
+ADC.C(24): error C141: syntax error near '1'
+ADC.C(45): error C202: 'write': undefined identifier
+ADC.C(46): error C202: 'write': undefined identifier
+ADC.C(54): error C202: 'adc1': undefined identifier
+ADC.C(55): error C202: 'adc2': undefined identifier
+ADC.C(93): error C202: 'channel': undefined identifier
+ADC.C(95): error C202: 'adc1': undefined identifier
+ADC.C(99): error C202: 'adc2': undefined identifier
+adc.c - 12 Error(s), 0 Warning(s).
+compiling adc.c...
+ADC.C(10): error C141: syntax error near 'P0', expected 'const'
+ADC.C(11): error C141: syntax error near 'P3', expected 'const'
+ADC.C(54): error C202: 'adc1': undefined identifier
+ADC.C(55): error C202: 'adc2': undefined identifier
+ADC.C(95): error C202: 'adc1': undefined identifier
+ADC.C(99): error C202: 'adc2': undefined identifier
+adc.c - 6 Error(s), 0 Warning(s).
+compiling adc.c...
+ADC.C(10): error C247: non-address/-constant initializer
+ADC.C(11): error C247: non-address/-constant initializer
+ADC.C(54): error C183: unmodifiable lvalue
+ADC.C(55): error C183: unmodifiable lvalue
+adc.c - 4 Error(s), 0 Warning(s).
+compiling adc.c...
 adc.c - 0 Error(s), 0 Warning(s).
 Build target 'Target 1'
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?ADC
-Program Size: data=9.0 xdata=0 code=112
+Program Size: data=9.0 xdata=0 code=122
 creating hex file from "adc"...
 "adc" - 0 Error(s), 1 Warning(s).
 compiling adc.c...
@@ -22,6 +68,59 @@ Build target 'Target 1'
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?ADC
-Program Size: data=9.0 xdata=0 code=112
+Program Size: data=9.0 xdata=0 code=114
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
+compiling adc.c...
+adc.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=105
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
+compiling adc.c...
+adc.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling adc.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=105
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=105
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
+compiling adc.c...
+adc.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=103
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
+compiling adc.c...
+adc.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=103
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
+compiling adc.c...
+adc.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=109
 creating hex file from "adc"...
 "adc" - 0 Error(s), 1 Warning(s).

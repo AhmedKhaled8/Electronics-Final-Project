@@ -7,26 +7,21 @@ void initialize(void) ;
 void write_adc(void) ; 
 
 
-sfr adc = 0x80;
-sbit write = P3 ^ 0;
-// float data ;
+#define adc1 P0
+#define adc2 P3
+
+sbit write = P2 ^ 0;
+sbit channel =P2^1;
+
 
 int main()
 {
 	initialize();
   init_timer2();
 	write = 0;
-	
 	EA = 1 ; 
 	
-	while(1)
-    {
-//			delay(500);
-//			P2 = 0 ; 
-//			delay(500);
-//			P2 = 0xff; 
-			
-		}
+	while(1){}
 	return 0;
 }
 
@@ -42,26 +37,25 @@ void write_adc(void)
 {
 	write = 0;
 	write = 1;
+	
 }
 
 void initialize(void)
 {
 	EA = 0; // Disable global interrupts
 	
-	// make port 0 as input
-	adc = 0xff;
-	// make port 1 as output
-	P1 = 0;
-	// make port 2 as input
-	P1 = 0;
-	// config port 3
-	P3 = 0xfc;
+//	// make port 0 as input
+	adc1 = 0xff;
+	adc2 = 0xff;
+
+	// config port 2
+	P2 = 0xfc;
 	
-	IT0 = 1; // Configure interrupt 0 for falling edge on /INT0 (P3.2)
-	EX0 = 1; // Enable EX0 Interrupt
+	//IT0 = 1; // Configure interrupt 0 for falling edge on /INT0 (P3.2)
+	//EX0 = 1; // Enable EX0 Interrupt
 	
-	IT1 = 1; // Configure interrupt 1 for falling edge on /INT1 (P3.3)
-	EX1 = 1; // Enable EX1 Interrupt
+	//IT1 = 1; // Configure interrupt 1 for falling edge on /INT1 (P3.3)
+	//EX1 = 1; // Enable EX1 Interrupt
 
 	WDTCN = 0xde; // Disable watchdog timer
 	WDTCN = 0xad;
@@ -87,8 +81,15 @@ void ISR_timer2 (void) interrupt 5
 {
 	TF2 = 0;
 	write_adc();
+	if(channel==1)
+	{
+	P1 = adc1 ; 
+	}
+	else
+	{
+		P1=adc2;
+	}
 	
-	P1 = adc ; 
 //	data = adc; 
 //	P1 = ~ data ; 
 }
