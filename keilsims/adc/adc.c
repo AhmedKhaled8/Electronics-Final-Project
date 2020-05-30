@@ -88,7 +88,7 @@ void ISR_timer2 (void) interrupt 5
 	TF2 = 0;
 	write_adc();
 	
-	P1 = ~ adc ; 
+	P1 = adc ; 
 //	data = adc; 
 //	P1 = ~ data ; 
 }

@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\projects\Faculty\Electronics\dac and adc\Electronics-Final-Project\keilsims\adc\adc.uvproj
+Project File Date:  05/30/2020
+
+<h2>Output:</h2>
+compiling adc.c...
+adc.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=112
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
+compiling adc.c...
+adc.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?ADC
+Program Size: data=9.0 xdata=0 code=112
+creating hex file from "adc"...
+"adc" - 0 Error(s), 1 Warning(s).
