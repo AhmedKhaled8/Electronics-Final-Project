@@ -97,3 +97,102 @@ Applying a weighted summer on 0805 input
 Yellow signal is the weighted summer and the blue one is the output of DAC0808, due to quaternization errors the output is not perfectly the same but in a close range to the input.  
 
 ![image-20200602141856793](3.png)
+
+
+
+### Digital Filters
+- We used the difference equation to design the filters. The difference equation is a formula for computing an output sample at time $n$ based on past and present input samples and past output samples in the time domain.
+We may write the general, causal, LTI difference equation as follows:
+<br>
+<center>
+
+$y(n) = b_0 x(n) + b_1 x(n-1) + ... + b_M x(n-M) + a_1 y(n-1) + a_2 y(n) + ... + a_N y(n-N)$
+
+</center>
+
+<center>
+
+$y(n) = \sum_{k=0}^{M} a_k x(n-k) + \sum_{k=1}^{N} b_k y(n-k)$
+
+</center>
+
+* The values of $a$ and $b$ are calculated based on the filter design using FDA tools. 
+
+* In our design we also considered designing using the IIR filter instead of the FIR filter as we concluded it could be more suitable for the 8051 as they reach faster stabilities per number of orders used. The chebychev 2 is the more popular type in IIR designs.
+
+#### Low Pass Filter
+When using an order of 19 with a cut-off frequency of 150 Hz, we generated these values of $a$ and $b$
+
+```c
+float code lpf_B[19] = {0.0009329, -0.01249, 0.07975, -0.3237, 0.9395, -2.083, 3.688, -5.398, 6.702, -7.188, 6.702, -5.398, 3.688, -2.083, 0.9395, -0.3237, 0.07975, -0.01249, 0.0009392};
+float code lpf_A[19] = {1, -14.52, 99.82, -431.9, 1317, -3008, 5330, -7488, 8459, -7738, 5747, -3456, 1671, -640.2, 190.2, -42.27, 6.618, -0.6512, 0.03032};
+
+```
+
+<img src='lpf.png'>
+
+#### High Pass Filter
+When using an order of 6 with a cut-off frequency of 1 Hz, we generated these values of $a$ and $b$
+
+```c
+float code hpf_B[6] = {0.99387, -4.969348, 9.93869, -9.93869, 4.96934, -0.99387};
+float code hpf_A[6] = {1, -4.98769, 9.95087, -9.92643, 4.951035, -0.98777};
+```
+<img src='hpf.png'>
+
+#### Notch Filter
+
+When using an order of 11 to notch the 50 Hz frequency, we generated these values of $a$ and $b$
+
+```c
+float code notch_B[11] = {0.97215, -9.68492, 43.45451, -115.6363, 202.1097, -242.43024, 202.1097, -115.6363, 43.4545, -9.68492, 0.972154571};
+float code notch_A[11] = {1, -9.90605, 44.19583, -116.9456, 203.24584, -242.4194, 200.96285, -114.3331, 42.7231, -9.46841, 0.94508};
+```
+
+<img src='notch.png'>
+
+#### Implementing the difference equation in C
+
+So, the values of $b$ are multiplied with the current input and previous values of input, the values of $a$ are multiplied with the previous of values of the output and the summation of all the above results in the new output
+
+```c
+float idata inputSignal[19];
+float idata outputSignal[19];
+
+void LPF()
+{
+	
+	char i;
+	outputSignal[0] += (inputSignal[0] * lpf_B[0]);
+	for(i = 1; i<19; i++)
+	{
+		outputSignal[0] += (outputSignal[i] * lpf_A[i] + inputSignal[i] * lpf_B[i]);
+	}
+}
+
+// The logic in LPF is the same as HPF and NOTCH with only the order being different
+
+```
+
+The ```inputSignal``` is an array that stores the current input (index 0) and previous values of input (index 1, 2, 3, ...) from the ADC to the MC that recieves the signal to be filtered as its input.
+
+The ```outputSignal``` is an array that stores the current output (index 0) and the previous values of output (index 1, 2, 3, ...), the MC sends the first index (0) (the current ouptut) to the DAC which convert it to an analog signal to be recorded in the oscilliscope.
+
+#### Problems
+Unfortuantely, the 8051 in Proteus was having some issues.
+1. Precision of floating
+Unlike what was written above the values of $a$ and $b$ contain more than 10 floating numbers. The 8051 may only deal with only 4-5 floating numbers. The accuracy is very affected with even discarding the 10th floating number. 
+
+2. Low Memory Capacitance 
+The memory storage of the 8051 isn't the most delightful among the other MCUs. This prevented us from using higher order filters which may be a good solution for the precision problem mentioned above.
+
+3. Proteus
+The original 8051 doesn't exist on Proteus, we use an equivalent MCU for simpler tasks. However, it has even lower properties.
+
+
+
+
+
+
+
+
