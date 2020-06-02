@@ -1,2 +1,2 @@
 # Electronics-Final-Project
-test slack commit
+Check report in the email and in the report directory
