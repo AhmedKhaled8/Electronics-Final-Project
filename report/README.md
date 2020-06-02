@@ -1,6 +1,17 @@
+
+
 # Final Electronics Projects 
 
 An implementation of a digital filter using ADC0805, DAC0808 & intel-8051 chip. 
+
+## TEAM
+
+| Name              | BN   |
+| ----------------- | ---- |
+| Ahmad Mahdy       | 9    |
+| Ahmad Khaled      | 4    |
+| Ahmad Alnouby     | 3    |
+| Ahmad Abdelmageed | 8    |
 
 ## <u>Files</u> 
 
