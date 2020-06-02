@@ -8,6 +8,7 @@ An implementation of a digital filter using ADC0805, DAC0808 & intel-8051 chip.
 
 | Name              | BN   |
 | ----------------- | ---- |
+| Sayed Abdullah    | 43   |
 | Ahmad Mahdy       | 9    |
 | Ahmad Khaled      | 4    |
 | Ahmad Alnouby     | 3    |
